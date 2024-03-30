@@ -39,6 +39,9 @@ function App() {
         type="button"
         onClick={(e) => {
           setTargetWord(textInput.current.value);
+          if (textInput.current.value === "") {
+            setResult("Word not found in the dictionary.");
+          }
         }}
       >
         Search
