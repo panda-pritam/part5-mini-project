@@ -68,7 +68,7 @@ function App() {
     }
 
     setFormView(!formView);
-    mainDiv.current.style.backgroundColor = "rgba(0,0,0)";
+    mainDiv.current.style.backgroundColor = "white";
   };
   return (
     <div className="modal" ref={mainDiv}>
