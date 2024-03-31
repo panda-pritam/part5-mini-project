@@ -18,7 +18,7 @@ function App() {
     mainDiv.current.style.backgroundColor = "rgba(0,0,0, 0.4)";
     mainDiv.current.style.zIndex = "0";
     setFormView(!formView);
-    mainDiv.current.style.backgroundColor = "white";
+    //mainDiv.current.style.backgroundColor = "white";
   };
   // let onPhoneNumberChange = (e) => {
   //   let no = e.target.value;
@@ -80,9 +80,12 @@ function App() {
         </button>
         <div
           className="formDiv"
-          onClick={() => {
-            setFormView(!formView);
-            mainDiv.current.style.backgroundColor = "white";
+          onClick={(e) => {
+            console.log(e.target.className);
+            if (e.target.className === "formDiv") {
+              setFormView(!formView);
+              mainDiv.current.style.backgroundColor = "white";
+            }
           }}
         >
           {formView && (
