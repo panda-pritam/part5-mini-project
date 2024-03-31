@@ -4,7 +4,7 @@ import { useRef, useState, useEffect } from "react";
 function App() {
   let mainDiv = useRef();
   // let [phoneNo, setPhoneNo] = useState(0);
-  // let [dob, setDob] = useState(0);
+  let [formView, setFormView] = useState(false);
   let [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -17,6 +17,7 @@ function App() {
   let onCleckHandler = (e) => {
     mainDiv.current.style.backgroundColor = "rgba(0,0,0, 0.4)";
     mainDiv.current.style.zIndex = "0";
+    setFormView(!formView);
   };
   // let onPhoneNumberChange = (e) => {
   //   let no = e.target.value;
@@ -45,7 +46,8 @@ function App() {
   let uname = useRef();
   let dob = useRef();
   let email = useRef();
-  let onSubmitHandler = () => {
+  let onSubmitHandler = (e) => {
+    e.preventDefault();
     let no = phoneNo.current.value;
     let enterDate = dob.current.value;
     if (
@@ -72,24 +74,26 @@ function App() {
         <button type="button" onClick={onCleckHandler} className="btn">
           Open Form
         </button>
-        <div className="userForm">
-          <h1 className="header">Fill Details</h1>
-          <label htmlFor="username">Username:</label>
-          <input type="text" id="username" ref={uname} required />
-          <label htmlFor="email">Email Address:</label>
-          <input type="email" id="email" ref={email} required />
-          <label htmlFor="phone">Phone Number:</label>
-          <input type="text" id="phone" ref={phoneNo} required />
-          <label htmlFor="dob">Date of Birth:</label>
-          <input type="date" id="dob" ref={dob} required />
-          <button
-            type="button"
-            className="submit-button"
-            onClick={onSubmitHandler}
-          >
-            Submit
-          </button>
-        </div>
+        {formView && (
+          <form className="userForm" onSubmit={onSubmitHandler}>
+            <h1 className="header">Fill Details</h1>
+            <label htmlFor="username">Username:</label>
+            <input type="text" id="username" ref={uname} required />
+            <label htmlFor="email">Email Address:</label>
+            <input type="email" id="email" ref={email} required />
+            <label htmlFor="phone">Phone Number:</label>
+            <input type="text" id="phone" ref={phoneNo} required />
+            <label htmlFor="dob">Date of Birth:</label>
+            <input type="date" id="dob" ref={dob} required />
+            <button
+              type="submit"
+              className="submit-button"
+              onClick={onSubmitHandler}
+            >
+              Submit
+            </button>
+          </form>
+        )}
       </div>
     </div>
   );
