@@ -66,6 +66,9 @@ function App() {
       alert("Invalid date of birth. Date of birth cannot be future.");
       return false;
     }
+
+    setFormView(!formView);
+    mainDiv.current.style.backgroundColor = "rgba(0,0,0)";
   };
   return (
     <div className="modal" ref={mainDiv}>
