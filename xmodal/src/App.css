@@ -1,9 +1,17 @@
-.modal {
+.mainDiv {
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
   width: 100vw;
+  height: 100vh;
+}
+.modal {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  width: 60vw;
   height: 100vh;
   /* box-sizing: border-box; */
 }
