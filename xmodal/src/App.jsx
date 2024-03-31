@@ -18,6 +18,7 @@ function App() {
     mainDiv.current.style.backgroundColor = "rgba(0,0,0, 0.4)";
     mainDiv.current.style.zIndex = "0";
     setFormView(!formView);
+    mainDiv.current.style.backgroundColor = "white";
   };
   // let onPhoneNumberChange = (e) => {
   //   let no = e.target.value;
@@ -72,37 +73,39 @@ function App() {
   };
   return (
     <div className="modal" ref={mainDiv}>
-      <h1 className="header">User Details Modal</h1>
-      <button type="button" onClick={onCleckHandler} className="btn">
-        Open Form
-      </button>
-      <div
-        className="modal-content"
-        onClick={() => {
-          setFormView(!formView);
-          mainDiv.current.style.backgroundColor = "white";
-        }}
-      >
-        {formView && (
-          <form className="userForm" onSubmit={onSubmitHandler}>
-            <h1 className="header">Fill Details</h1>
-            <label htmlFor="username">Username:</label>
-            <input type="text" id="username" ref={uname} required />
-            <label htmlFor="email">Email Address:</label>
-            <input type="email" id="email" ref={email} required />
-            <label htmlFor="phone">Phone Number:</label>
-            <input type="text" id="phone" ref={phoneNo} required />
-            <label htmlFor="dob">Date of Birth:</label>
-            <input type="date" id="dob" ref={dob} required />
-            <button
-              type="submit"
-              className="submit-button"
-              onClick={onSubmitHandler}
-            >
-              Submit
-            </button>
-          </form>
-        )}
+      <div className="modal-content">
+        <h1 className="header">User Details Modal</h1>
+        <button type="button" onClick={onCleckHandler} className="btn">
+          Open Form
+        </button>
+        <div
+          className="formDiv"
+          onClick={() => {
+            setFormView(!formView);
+            mainDiv.current.style.backgroundColor = "white";
+          }}
+        >
+          {formView && (
+            <form className="userForm" onSubmit={onSubmitHandler}>
+              <h1 className="header">Fill Details</h1>
+              <label htmlFor="username">Username:</label>
+              <input type="text" id="username" ref={uname} required />
+              <label htmlFor="email">Email Address:</label>
+              <input type="email" id="email" ref={email} required />
+              <label htmlFor="phone">Phone Number:</label>
+              <input type="text" id="phone" ref={phoneNo} required />
+              <label htmlFor="dob">Date of Birth:</label>
+              <input type="date" id="dob" ref={dob} required />
+              <button
+                type="submit"
+                className="submit-button"
+                onClick={onSubmitHandler}
+              >
+                Submit
+              </button>
+            </form>
+          )}
+        </div>
       </div>
     </div>
   );
