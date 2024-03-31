@@ -72,7 +72,17 @@ function App() {
     mainDiv.current.style.backgroundColor = "white";
   };
   return (
-    <div className="modal" ref={mainDiv}>
+    <div
+      className="modal"
+      ref={mainDiv}
+      onClick={(e) => {
+        console.log(e.target.className);
+        if (e.target.className === "modal") {
+          setFormView(!formView);
+          mainDiv.current.style.backgroundColor = "white";
+        }
+      }}
+    >
       <div className="modal-content">
         <h1 className="header">User Details Modal</h1>
         <button type="button" onClick={onCleckHandler} className="btn">
@@ -80,13 +90,13 @@ function App() {
         </button>
         <div
           className="formDiv"
-          onClick={(e) => {
-            console.log(e.target.className);
-            if (e.target.className === "formDiv") {
-              setFormView(!formView);
-              mainDiv.current.style.backgroundColor = "white";
-            }
-          }}
+          // onClick={(e) => {
+          //   console.log(e.target.className);
+          //   if (e.target.className === "formDiv") {
+          //     setFormView(!formView);
+          //     mainDiv.current.style.backgroundColor = "white";
+          //   }
+          // }}
         >
           {formView && (
             <form className="userForm" onSubmit={onSubmitHandler}>
