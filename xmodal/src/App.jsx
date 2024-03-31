@@ -72,11 +72,17 @@ function App() {
   };
   return (
     <div className="modal" ref={mainDiv}>
-      <div className="modal-content">
-        <h1 className="header">User Details Modal</h1>
-        <button type="button" onClick={onCleckHandler} className="btn">
-          Open Form
-        </button>
+      <h1 className="header">User Details Modal</h1>
+      <button type="button" onClick={onCleckHandler} className="btn">
+        Open Form
+      </button>
+      <div
+        className="modal-content"
+        onClick={() => {
+          setFormView(!formView);
+          mainDiv.current.style.backgroundColor = "white";
+        }}
+      >
         {formView && (
           <form className="userForm" onSubmit={onSubmitHandler}>
             <h1 className="header">Fill Details</h1>
